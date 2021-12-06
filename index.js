@@ -1,19 +1,24 @@
 
 const express = require("express");
 const app = express();
+const path = require("path");
+const static_path = path.join(__dirname, "/publik");
+app.use(express.static(static_path)); // för att servern ska hitta
 
 // app.get("/",function(req,res) {  < hade så innan,  vad är skillnaden på denna och den nedan?
 app.get("/",(req,res) => {  
 
-    res.sendFile(__dirname + "/index.html");   // visar html-sidan index.html
+    res.sendFile(static_path + "/exempel.html");   // visar html-sidan
 
 });
+
+
 
 app.listen(3000);  // startar servern på port 3000
 
 console.log("Kör servern på localhost:3000"); // meddelar att  servern körs
 
-app.use(express.static("publik"));
+
 
 // gammal kod nedan kanske använder
 /*
