@@ -9,5 +9,21 @@ window.onload = function(){
                  "</li> <li>Inlägg: " + this['inlagg'] + "</li><li>" + "När: " + this['tid'] + "</li><br/>"
                  );}
                  );}
-                 );}
-                 ;
+                 );
+                 
+
+
+let forfragan = new XMLHttpRequest();
+forfragan.open("GET", "/hamta-data");
+
+forfragan.onload = function(){
+    console.log("mottaget svar från servern");
+    console.log(this);
+    console.log(this.response);
+
+}
+
+forfragan.send(); 
+
+console.log("last line");
+}
