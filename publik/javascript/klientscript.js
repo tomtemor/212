@@ -32,7 +32,7 @@ forfragan.onload = function(){
   //   } 
   document.getElementById("output").innerHTML += data[i].date + " skrev ";
   document.getElementById("output").innerHTML += "<span style='color:red;'>" + data[i].name + " : </span>";
-  document.getElementById("output").innerHTML += data[i].message + " ";
+  document.getElementById("output").innerHTML += "<span style='white-space: pre-wrap;'>" + data[i].message + " </span>";
 
     document.getElementById("output").innerHTML += "<br><br>";
 }

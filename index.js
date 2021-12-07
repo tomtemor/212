@@ -1,4 +1,4 @@
-
+// Börjar med det vanliga för att initiera grejer och starta upp servern
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -15,25 +15,20 @@ var year = date_ob.getFullYear();
 var date = year + "-" + month + "-" + day;
 //console.log(date);  
 var hours = date_ob.getHours();
-// var minutes = date_ob.getMinutes();
-//var minutes = date_ob.getMinutes()<10?'0':'';
-
-if (date_ob.getMinutes() < 10 ) { var minutes ="0" + date_ob.getMinutes(); }
-
+if (date_ob.getMinutes() < 10 ) { var minutes ="0" + date_ob.getMinutes(); } // lite specialare för att få inledande nolla på minuter med en siffra
 else {var minutes = date_ob.getMinutes ();}
-// var seconds = date_ob.getSeconds();
-
 var dateTime = year + "-" + month + "-" + day + " " + hours + ":" + minutes;
 //console.log(dateTime);
 
-app.get("/",(req,res) => {  
+app.get("/",(req,res) => {  // serverar en initial html-sida till besökaren
   res.sendFile(__dirname + "/exempel.html");
 });
 
 
 const fs = require("fs");
 
-app.get("/hamta-data", (req, res) => {
+// Första routen för att hämta data från json-filen
+app.get("/hamta-data", (req, res) => { 
   console.log("mottog förfrågan från klienten");
  // res.send("Hej från servern");
   fs.readFile("test.json", function(err, data) {
@@ -43,20 +38,20 @@ app.get("/hamta-data", (req, res) => {
   });
 });
 
-app.get("/skriv-fran-mall", (req, res) => {
+// route för att ladda skriv-fran-mall-sidan utan att skriva
+app.get("/skriv-fran-mall", (req, res) => { 
   fs.readFile("exempel.html", function(err, data){
       fs.readFile("test.json", function(err, minJson) {
-        //console.log("Minj" + minJson);
-          //let html = data.toString().replace(/ERSÄTT_MED_SERVERGENERERAT_INNEHÅLL/, minJson);
-          //res.send(html);
           res.send(data.toString());
       });
   });
 });
 
-// ny skriv till fil -kod 2021-12-06
-app.use(express.urlencoded({extended:true}));
 
+app.use(express.urlencoded({extended:true}));  // för att kunna använda urler
+
+//route för att skriva till json-filen och presentera sidan, läser in exempel.html i data, läser in test.json i minJson, 
+// skriver och pushar in en ny post (nyPost) i json och skriver tillbaka till filen.  Skickar sen html-filen på nytt till klienten
 app.post("/skriv-fran-mall", (req, res) => {
   fs.readFile("exempel.html", function(err, data){
   fs.readFile("test.json", function (err, minJson) {
