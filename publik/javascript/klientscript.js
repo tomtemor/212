@@ -30,8 +30,8 @@ forfragan.onload = function(){
   //  for (attribut in data[i]) {
   //       document.getElementById("output").innerHTML += data[i][attribut] + " ";
   //   } 
-  document.getElementById("output").innerHTML += data[i].date + " <span style='color:red;'>skrev</span> ";
-  document.getElementById("output").innerHTML += data[i].name + " : ";
+  document.getElementById("output").innerHTML += data[i].date + " skrev ";
+  document.getElementById("output").innerHTML += "<span style='color:red;'>" + data[i].name + " : </span>";
   document.getElementById("output").innerHTML += data[i].message + " ";
 
     document.getElementById("output").innerHTML += "<br><br>";
