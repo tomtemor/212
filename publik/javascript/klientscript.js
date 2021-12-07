@@ -22,14 +22,18 @@ forfragan.onload = function(){
    // console.log(this);
    // console.log(this.response);
     data = JSON.parse(this.response);
-  // console.log(data);
+   console.log(data);
  
    //for (let i = 0; i < data.length; i++) { // för vart och ett av objekten i fältet // tidigare kod
    for (let i = data.length-1; i >=0; i--) { // för vart och ett av objekten i fältet // ny kod > baklänges
-   
-   for (attribut in data[i]) {
-        document.getElementById("output").innerHTML += data[i][attribut] + " ";
-    }
+  //   document.getElementById("output").innerHTML += data[2] + " ";
+  //  for (attribut in data[i]) {
+  //       document.getElementById("output").innerHTML += data[i][attribut] + " ";
+  //   } 
+  document.getElementById("output").innerHTML += data[i].date + " <span style='color:red;'>skrev</span> ";
+  document.getElementById("output").innerHTML += data[i].name + " : ";
+  document.getElementById("output").innerHTML += data[i].message + " ";
+
     document.getElementById("output").innerHTML += "<br><br>";
 }
 

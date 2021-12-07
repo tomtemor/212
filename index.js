@@ -8,6 +8,19 @@ app.use(express.static("publik"));
 app.listen(4000);  // startar servern på port 4000
 console.log("Kör servern på localhost:4000"); // meddelar att  servern körs
 
+// initierar datum och tid för post
+var date_ob = new Date();
+var day = ("0" + date_ob.getDate()).slice(-2);
+var month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+var year = date_ob.getFullYear();   
+var date = year + "-" + month + "-" + day;
+//console.log(date);  
+var hours = date_ob.getHours();
+var minutes = date_ob.getMinutes();
+// var seconds = date_ob.getSeconds();
+var dateTime = year + "-" + month + "-" + day + " " + hours + ":" + minutes;
+//console.log(dateTime);
+
 // app.get("/",function(req,res) {  < hade så innan,  vad är skillnaden på denna och den nedan?
 app.get("/",(req,res) => {  
   // res.sendFile(static_path + "/exempel.html");   // visar html-sidan
@@ -44,17 +57,14 @@ app.use(express.urlencoded({extended:true}));
 app.post("/skriv-fran-mall", (req, res) => {
   fs.readFile("exempel.html", function(err, data){
   fs.readFile("test.json", function (err, minJson) {
+    
       let json = JSON.parse(minJson);
       let nyPost = {
-        topic: "tåpiiic",
+        date: dateTime,
         name: req.body.name,
-        email: "nissehult718@sunet.se",
         message: req.body.inlagg 
       };
-
-     // console.log("json: " + json[0].name);
-     // console.log("json.topic: " + json.topic);
-     
+ 
      //console.log(nyPost);
      json.push(nyPost);
      
@@ -62,17 +72,21 @@ app.post("/skriv-fran-mall", (req, res) => {
         if (err) throw err;
         console.log("Ändringar sparade till filen!"); 
       });
-      let output = "";
+      //
+     /* let output = "";
             for (post in json) {
                 for (attribut in post) {
                     output += post[attribut] + " ";
                 }
                 output += "<br><br>";
-            }
+            } */
            // console.log("output: " + output); 
-            let html = data.toString().replace(/ERSÄTT_MED_SERVERGENERERAT_INNEHÅLL/, output);
+           // let html = data.toString().replace(/ERSÄTT_MED_SERVERGENERERAT_INNEHÅLL/, output);
+          //let html = data.toString();
            // console.log("outp: " + output);
-            res.send(html);
+             //res.send(html);
+             res.send(data.toString());
+             //res.send(JSON.parse(data));
     });
 
   });
