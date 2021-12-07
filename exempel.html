@@ -9,15 +9,25 @@
     <script src="javascript/klientscript.js"> </script>
 </head>
 <body>
-    <h1>webbsida</h1>
+    <h1>Christers gästbok 1.0</h1>
 
     <form action="/skriv-fran-mall" method="post">
-        <label for = "name" >Namn </label><input type="text" name="name" id="name"><br><br>
-        <label for = "Inlägg" >Inlägg </label><textarea name="inlagg" id="inlagg"></textarea><br><br>
+        <label for = "name" >Namn </label><input type="text" name="name" id="name" required><br><br>
+        <label for = "Inlägg" >Inlägg </label><textarea name="inlagg" id="inlagg" required></textarea><br><br>
         <input type="submit">
     </form>
 
+<!--
+    <ul>
+<li>test</li>
+    </ul>
+    -->
 
-    <ul></ul>
+<p>Tidigare inlägg:</p>
+
+<!-- ERSÄTT_MED_SERVERGENERERAT_INNEHÅLL -->
+
+<p id="output"></p>
+
 </body>
 </html>
