@@ -1,3 +1,10 @@
+/* Individuell uppgift JavasScript del 1
+Christer Klasson, SYNED21JON 
+har inte kommenterat så mycket, hoppas det räcker, det mesta är självförklarande!
+
+*/
+
+
 // Börjar med det vanliga för att initiera grejer och starta upp servern
 const express = require("express");
 const app = express();
