@@ -8,15 +8,43 @@
     <script src="javascript/jquery-3.3.1.min.js"></script>
     <script src="javascript/klientscript.js"> </script>
 
-
+<style>
+ input, textarea {
+  border: 2px solid;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin: 0.25rem;
+  min-width: 125px;
+  padding: 0.5rem;
+  transition: border-color 0.5s ease-out;
+}
+input:optional {
+  border-color: gray;
+}
+input:required:valid {
+  border-color: green;
+}
+input:invalid {
+  border-color: red;
+}
+input:required:focus:valid {
+  background: url("https://assets.digitalocean.com/labs/icons/hand-thumbs-up.svg") no-repeat 95% 50% lightgreen;
+  background-size: 25px;
+}
+input:focus:invalid {
+  background: url("https://assets.digitalocean.com/labs/icons/exclamation-triangle-fill.svg") no-repeat 95% 50% lightsalmon;
+  background-size: 25px;
+border-color: red;
+}   
+</style>
 </head>
 <body>
     <h1>Christers gästbok 1.0</h1>
 
     <form action="/skriv-fran-mall" method="post">
-        <label for = "name" >Namn </label><input type="text" title="måste vara giltigt namn eller förnamn + efternamn" name="name" id="name" pattern="[a-öA-Ö ]{2,}" required><br><br>
-        <label for = "Inlägg" >Inlägg </label><textarea name="inlagg" id="inlagg" required> </textarea><br><br>
-        <input type="submit">
+        <label for = "name" >Namn: </label><br><input type="text" title="måste vara giltigt namn eller förnamn + efternamn" name="name" id="name" pattern="[a-öA-Ö ]{2,}" required><br><br>
+        <label for = "Inlägg" >Inlägg: </label><br><textarea name="inlagg" id="inlagg" required type="text" rows="5" cols="60" > </textarea><br><br>
+        <input type="submit" id="button">
     </form>
 
 
@@ -26,11 +54,14 @@
 
 <p id="output"></p>
 
-</body>
+
 
 <script>
-    if ( window.history.replaceState ) {
-      window.history.replaceState( null, null, window.location.href );
+    if ( window.history.replaceState ) { 
+      window.history.replaceState( null, null, window.location.href );  
     }
+
+  
     </script>
+    </body>
 </html>

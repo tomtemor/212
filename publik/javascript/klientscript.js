@@ -3,7 +3,9 @@ Individuell inlämning del 2. Del 1, Gästbok
 Christer Klasson SYNED21JON
 
 Har skapat en enkel gästbok och lyckats få det funka!
+Försökte få till lite mer funktionalitet men det blev för krångligt... Har grundläggande koden..
 */
+
 
 
 
